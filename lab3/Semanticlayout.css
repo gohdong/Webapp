@@ -4,12 +4,12 @@ body {
     background-image: url("https://selab.hanyang.ac.kr/courses/cse326/2019/labs/images/3/blueTextureBG.jpg");
 }
 
-header {
+.maincontent {
     border: 10px solid white;
     background: white;
 }
 
-.title {
+header {
     text-align: right;
     background: #1D2475;
     color: white;
