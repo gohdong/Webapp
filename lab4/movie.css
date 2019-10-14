@@ -1,0 +1,114 @@
+body {
+    background-image: url("background.png");
+    font-size: 8pt;
+    font-family: Verdana;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 24pt;
+    font-weight: bold;
+    text-align: center;
+    font-family: Tahoma;
+    text-shadow: 3px 3px #999999;
+}
+
+#banner {
+    text-align: center;
+    background-image: url("bannerbg.png");
+    height: 50px;
+}
+
+#maincontent {
+    overflow: hidden;
+    width: 800px;
+    border: solid gray 4px;
+    border-radius: 20px;
+    margin: auto;
+}
+
+#overview {
+    background-color: #A2B964;
+    width: 250px;
+    float: right;
+    font-family: Arial;
+}
+
+#overview dl {
+    padding-left: 10pt;
+}
+
+#overview dt {
+    font-weight: bold;
+    margin-top: 10pt;
+}
+
+#overview ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.critic {
+    width: 550px;
+    overflow: hidden;
+}
+
+.point {
+    background-image: url("rbg.png");
+    height: 83px;
+    font-size: 48pt;
+    font-weight: bold;
+    color: red;
+}
+
+.point img {
+    vertical-align: bottom;
+}
+
+.critic_divide {
+    margin-left: 2%;
+    float: left;
+    width: 47%;
+}
+
+.critic_divide div {
+    margin-bottom: 20pt;
+}
+
+.review_box {
+    clear: left;
+    font-weight: bold;
+    padding: 8px;
+    background-color: #E8DC9B;
+    border: solid 2px gray;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 20pt;
+}
+
+.critic img {
+    float: left;
+    vertical-align: bottom;
+    margin-right: 5px;
+}
+
+.affiliation {
+    font-style: italic;
+}
+
+#footer {
+    text-align: center;
+    clear: right;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: #A2B964;
+    padding: 5px;
+}
+
+#valid {
+    opacity: 0.5;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
