@@ -1,11 +1,8 @@
-
-	
-
 <!DOCTYPE html>
 <html lang="en">
 
 	<head>
-		<title>Music Libraryy</title>
+		<title>Music Library</title>
 		<meta charset="utf-8" />
 		<link href="https://selab.hanyang.ac.kr/courses/cse326/2019/labs/images/5/music.jpg" type="image/jpeg" rel="shortcut icon" />
 		<link href="https://selab.hanyang.ac.kr/courses/cse326/2019/labs/labResources/music.css" type="text/css" rel="stylesheet" />
@@ -30,9 +27,13 @@
 		<div class="section">
 			<h2>Billboard News</h2>
 			<ol>
-			<?php $news_pages = 5?>
+			<?php 
+			$news_pages =$_GET["newspages"] ;
+			if ($news_pages==0) {
+				$news_pages =5;
+			}?>
 			<?php for ($i=0; $i <$news_pages ; $i++) { ?>
-				<li><a href="https://www.billboard.com/archive/article/2019<?= 11-$i?>">2019-<?= 11-$i?></a></li>
+				<li><a href="https://www.billboard.com/archive/article/2019<?= sprintf("%02d",11-$i)?>">2019-<?=  sprintf("%02d",11-$i)?></a></li>
 			<?php }?>
 			</ol>
 		
@@ -42,11 +43,14 @@
 		<!-- Ex 5: Favorite Artists from a File (Files) -->
 		<div class="section">
 			<h2>My Favorite Artists</h2>
-		
+			
 			<ol>
-				<li>Guns N' Roses</li>
-				<li>Green Day</li>
-				<li>Blink182</li>
+			<?php
+				$favorite_artists = file("favorite.txt");
+				for ($i =0; $i<count($favorite_artists);$i++){				
+			?>
+				<li><a href="http://en.wikipedia.org/wiki/<?=$favorite_artists[$i]?>"><?=$favorite_artists[$i]?></a></li>
+				<?php }?>
 			</ol>
 		</div>
 		
@@ -56,27 +60,44 @@
 			<h2>My Music and Playlists</h2>
 
 			<ul id="musiclist">
+				<?php
+					$music_list = glob("lab5/musicPHP/songs/*.mp3");
+					$music_list_key_by_size = array();
+					foreach ($music_list as $ml) {
+						$music_list_key_by_size[filesize($ml)] = $ml;
+					}
+					krsort($music_list_key_by_size);
+					foreach ($music_list_key_by_size as $mk) {
+				?>
+
+
 				<li class="mp3item">
-					<a href="lab5/musicPHP/songs/paradise-city.mp3">paradise-city.mp3</a>
+					<a href="<?= $mk?>"><?= explode("/",$mk)[3]?></a>
+					(<?= (int)(filesize($mk)/1024)?> KB)
 				</li>
 				
-				<li class="mp3item">
-					<a href="lab5/musicPHP/songs/basket-case.mp3">basket-case.mp3</a>
-				</li>
-
-				<li class="mp3item">
-					<a href="lab5/musicPHP/songs/all-the-small-things.mp3">all-the-small-things.mp3</a>
-				</li>
+			
+				<?php }?>
 
 				<!-- Exercise 8: Playlists (Files) -->
-				<li class="playlistitem">326-13f-mix.m3u:
+				<?php 
+					$play_list = glob("lab5/musicPHP/songs/*.m3u");
+					rsort($play_list);
+					foreach ($play_list as $list) {
+				?>
+				
+				<li class="playlistitem"><?=explode("/",$list)[3]?>:
 					<ul>
-						<li>Basket Case.mp3</li>
-						<li>All the Small Things.mp3</li>
-						<li>Just the Way You Are.mp3</li>
-						<li>Pradise City.mp3</li>
-						<li>Dreams.mp3</li>
+					<?php $pl_list = file("$list");
+					shuffle($pl_list);
+					foreach ($pl_list as $pl) {
+						if(!(strpos($pl,"#")===0)){
+					?>
+						<li><?= $pl?></li>
+					<?php }}?>
 					</ul>
+				</li>
+				<?php }?>
 			</ul>
 		</div>
 
