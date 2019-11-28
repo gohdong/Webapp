@@ -13,7 +13,7 @@ function buttonClick() {
     setInterval(function() {
         size += 2;
         var textbox = document.getElementById("test");
-        textbox.style.fontSize = `${size}pt`
+        textbox.style.fontSize = parseInt(size) + "pt";
     }, 500);
 
 
@@ -22,7 +22,7 @@ function buttonClick() {
 function checkBling() {
     // document.getElementById("myCheck").checked = true;
     var checkbox = document.getElementById("check").checked;
-    if (checkbox == true) {
+    if (checkbox === true) {
         document.getElementById("test").style.fontWeight = "bold";
         document.getElementById("test").style.textDecoration = "underline";
         document.getElementById("test").style.color = "green";
@@ -36,7 +36,7 @@ function checkBling() {
 
 function snoopify() {
     var textbox = document.getElementById("test");
-    var partBox = textbox.value.split('.')
+    var partBox = textbox.value.split('.');
     var jbStr2 = partBox.join('-izzle.');
 
     // alert(textbox.value.split('.')[1])
