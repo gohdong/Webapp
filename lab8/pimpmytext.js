@@ -1,6 +1,14 @@
 "use strict";
 
+function pageLoad() {
+    document.getElementById("biggerButton").onclick = buttonClick;
+    document.getElementById("check").onchange = checkBling;
+    document.getElementById("snoop").onclick = snoopify;
+}
+
 function buttonClick() {
+
+
     var size = 12;
     setInterval(function() {
         size += 2;
@@ -35,3 +43,4 @@ function snoopify() {
     textbox.value = jbStr2.toUpperCase();
 
 }
+window.onload = pageLoad;
